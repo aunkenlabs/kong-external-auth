@@ -1,20 +1,20 @@
 package = "external-auth"
-
-version = "0.1-1"
-
+version = "0.1-2"
+supported_platforms = {"linux", "macosx"}
 source = {
-  url = "https://github.com/aunkenlabs/kong-external-auth",
+  url = "git://github.com/aunkenlabs/kong-external-auth",
   tag = "0.1"
 }
-
 description = {
   summary = "Kong plugin to authenticate requests using http services.",
-  license = "MIT"
+  license = "MIT",
+  homepage = "https://github.com/aunkenlabs/kong-external-auth",
+  detailed = [[
+      Kong plugin to authenticate requests using http services.
+  ]]
 }
-
 dependencies = {
 }
-
 build = {
   type = "builtin",
   modules = {

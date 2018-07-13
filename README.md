@@ -9,7 +9,7 @@ This plugin lets you authenticate any request using a separate HTTP service.
 For every incoming request, the `method`, `path`, `query` and `headers` are forwarded to the auth service (removing the body).
 
 If the service returns `200`, the request continues the normal path.
-In any other case, `401` (forbidden) is returned to the client.
+In any other case, `401` (Unauthorized) is returned to the client.
 
 ## Installation
 
