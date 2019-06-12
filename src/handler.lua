@@ -1,6 +1,7 @@
 local BasePlugin = require "kong.plugins.base_plugin"
-local responses = require "kong.tools.responses"
 local http = require "resty.http"
+
+local kong = kong
 
 local ExternalAuthHandler = BasePlugin:extend()
 
@@ -23,14 +24,15 @@ function ExternalAuthHandler:access(conf)
   })
 
   if not res then
-    return responses.send_HTTP_INTERNAL_SERVER_ERROR(err)
+    return kong.response.exit(500, {message=err})
   end
 
   if res.status ~= 200 then
-    return responses.send_HTTP_UNAUTHORIZED()
+    return kong.response.exit(401, {message="Invalid authentication credentials"})
   end
 end
 
 ExternalAuthHandler.PRIORITY = 900
+ExternalAuthHandler.VERSION = "0.2.0"
 
 return ExternalAuthHandler
